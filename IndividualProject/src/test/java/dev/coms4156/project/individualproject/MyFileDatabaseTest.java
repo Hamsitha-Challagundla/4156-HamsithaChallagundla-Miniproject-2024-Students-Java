@@ -3,7 +3,6 @@ package dev.coms4156.project.individualproject;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.io.IOException;
 import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +33,7 @@ class MyFileDatabaseTest {
   }
 
   @Test
-  void testDeSerializeObjectFromFile(){
+  void testDeSerializeObjectFromFile() {
     HashMap<String, Department> testMapping = new HashMap<>();
     testMapping.put("PHYS", new Department("PHYS", new HashMap<>(), "Dmitri N. Basov", 43));
 

@@ -1,56 +1,65 @@
-BUG REPORT
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 CLASS NAME - Course.java
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-BUG NAME - Wrong initialisation of the variable "enrolledStudentCount"
-SUMMARY - "enrolledStudentCount" was initialised to 500, changed it to 0
+1)
+BUG NAME - Incorrect initialization of the variable "enrolledStudentCount"
+SUMMARY - "enrolledStudentCount" was initialized to 500, changed it to 0
 METHOD NAME - Course constructor
 BEFORE - this.enrolledStudentCount = 500;
 AFTER - this.enrolledStudentCount = 0;
 
+2)
 BUG NAME - Incomplete logic in enrollStudent()
-SUMMARY - Was not checking if the course was full or not before enrolling a student. Added code to comply with java doc comment to return true/false according to the class capacity.
+SUMMARY - Was not checking if the course was full or not before enrolling a student. Added code to comply with JavaDoc comment to return true/false according to the class capacity.
 METHOD NAME - enrollStudent()
 
+3)
 BUG NAME - Incomplete logic in dropStudent()
-SUMMARY - Was not checking if the course had students enrolled or not before dropping a student. Added code to comply with java doc comment to return true/false according to the count of enrolled students.
-Only if the enrolledStudentCount is more than zero, we should allow to drop a student.
+SUMMARY - Was not checking if the course had students enrolled or not before dropping a student. Added code to comply with JavaDoc comment to return true/false based on the number of enrolled students.
+Only if the enrolledStudentCount is more than zero, we should allow dropping a student.
 METHOD NAME - dropStudent()
 
-BUG NAME - wrong return value
+4)
+BUG NAME - Incorrect return value
 SUMMARY - Supposed to return course location, but was returning instructor name.
 METHOD NAME - getCourseLocation()
 BEFORE - return this.instructorName;
 AFTER - return this.courseLocation;
 
-BUG NAME - wrong return value
+5)
+BUG NAME - Incorrect return value
 SUMMARY - Supposed to return instructorName, but was returning courseLocation.
 METHOD NAME - getInstructorName()
 BEFORE - return this.courseLocation;
 AFTER - return this.instructorName;
 
-BUG NAME - MissingOverride	The method 'toString()' is missing an @Override annotation.
-SUMMARY -  Added @override
-METHOD NAME - toString()
-
-BUG NAME - Not checking newInstructorName while reassigning
-SUMMARY - Added code to validate newInstructorName that it is not empty/null while reassigning
-METHOD NAME - reassignInstructor()
-
-BUG NAME - Not checking newLocation while reassigning
-SUMMARY - Added code to validate newLocation that it is not empty/null while reassigning
-METHOD NAME - reassignLocation()
-
-BUG NAME - Not checking newTime while reassigning
-SUMMARY - Added code to validate newTime that it is not empty/null while reassigning
-METHOD NAME - reassignTime()
-
+6)
 BUG NAME - No validation while setting student enrollment count
 SUMMARY -  Added code to check if the count is greater than or equals to 0 and if the count is less than course's capacity
 METHOD NAME - setEnrolledStudentCount()
 
+7)
+BUG NAME - MissingOverride	The method 'toString()' is missing an @Override annotation.
+SUMMARY -  Added @override
+METHOD NAME - toString()
+
+8)
+BUG NAME - Not checking newInstructorName while reassigning
+SUMMARY - Added code to validate newInstructorName that it is not empty/null while reassigning
+METHOD NAME - reassignInstructor()
+
+9)
+BUG NAME - Not checking newLocation while reassigning
+SUMMARY - Added code to validate newLocation that it is not empty/null while reassigning
+METHOD NAME - reassignLocation()
+
+10)
+BUG NAME - Not checking newTime while reassigning
+SUMMARY - Added code to validate newTime that it is not empty/null while reassigning
+METHOD NAME - reassignTime()
+
+11)
 BUG NAME - Wrong logic to check if the course is full
 SUMMARY - corrected the logic to check isCourseFull -> enrolledStudentCount should be greater or equals to the enrollmentCapacity
 METHOD NAME - isCourseFull()
@@ -58,76 +67,91 @@ METHOD NAME - isCourseFull()
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 CLASS NAME - Department.java
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+1)
 BUG NAME - LooseCoupling	Avoid using implementation types like 'HashMap'; use the interface instead
 SUMMARY - Changed return type HashMap -> Map interface
 METHOD NAME - Department Constructor
 
-BUG NAME - Wrong return value of the number of majors
+2)
+BUG NAME - Incorrect return value of the number of majors
 SUMMARY - was returning negative(-) of numberOfMajors value, I changed it to this.numberOfMajors
 METHOD NAME - getNumberOfMajors()
 BEFORE - return -this.numberOfMajors;
 AFTER - return this.numberOfMajors;
 
-BUG NAME - Wrong return value of the department chair
+3)
+BUG NAME - Incorrect return value of the department chair
 SUMMARY - was returning "this.departmentChair", I changed it to this.departmentChair
 METHOD NAME - getDepartmentChair()
 BEFORE - return "this.getDepartmentChair"
 AFTER - return this.getDepartmentChair;
 
+4)
 BUG NAME - LooseCoupling	Avoid using implementation types like 'HashMap'; use the interface instead
 SUMMARY - Changed return type HashMap -> Map interface
 METHOD NAME - getCourseSelection()
 
+5)
 BUG NAME - Wrong method name
-SUMMARY - Java doc mentioned the method increases the majors by one, but the old method name was addPersonToMajor.
+SUMMARY - JavaDoc comment mentioned the method increases the majors by one, but the old method name was addPersonToMajor.
 So, I changed the method name to "increaseMajorsByOne"
 METHOD NAME - addPersonToMajor() -> increaseMajorsByOne()
 
+6)
 BUG NAME - Wrong method name
-SUMMARY - Java doc mentioned the method decreases the majors by one, but the old method name was dropPersonFromMajor.
+SUMMARY - JavaDoc comment mentioned the method decreases the majors by one, but the old method name was dropPersonFromMajor.
 So, I changed the method name to "decreaseMajorsByOne"
 METHOD NAME - dropPersonFromMajor() -> decreaseMajorsByOne()
 
+7)
 BUG NAME - Not checking if numberOfMajors < 0
 SUMMARY - Added a check to only decrease majors by one if numberOfMajors > 0
 METHOD NAME - decreaseMajorsByOne()
 
+8)
 BUG NAME - MissingOverride	The method 'toString()' is missing an @Override annotation.
 SUMMARY - Added @Override to toString() method.
 METHOD NAME - toString()
 
-BUG NAME - Wrong return value
+9)
+BUG NAME - Incorrect return value
 SUMMARY - Was returning the string literal "result.toString()", instead of result.toString().
 METHOD NAME - toString()
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 CLASS NAME - MyFileDatabase.java
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+1)
 BUG NAME - Changed filepath to final
 SUMMARY -  Changed from private String filePath to private final String filePath;
 METHOD NAME - class variable
 
+2)
 BUG NAME - LooseCoupling	Avoid using implementation types like 'HashMap'; use the interface instead
 SUMMARY - Changed return type HashMap -> Map interface
 METHOD NAME - setMapping()
 
+3)
 BUG NAME - LooseCoupling	Avoid using implementation types like 'HashMap'; use the interface instead
 SUMMARY - Changed return type HashMap -> Map interface
 METHOD NAME - deSerializeObjectFromFile()
 
+4)
 BUG NAME - Not handling FileNotFoundException
 SUMMARY - Added code to handle FileNotFoundException, when the required file is not found
 METHOD NAME - deSerializeObjectFromFile()
 
+5)
 BUG NAME - ReturnEmptyCollectionRatherThanNull	Return an empty collection rather than null.
 SUMMARY - Added code to return empty collection(Hashmap) instead of null
 METHOD NAME -  deSerializeObjectFromFile()
 
+6)
 BUG NAME - LooseCoupling	Avoid using implementation types like 'HashMap'; use the interface instead
 SUMMARY - Changed return type HashMap -> Map interface
 METHOD NAME - getDepartmentMapping()
 
+7)
 BUG NAME - Might cause null pointer exception
 SUMMARY - Added a null check for departmentMapping variable,
 as we are using departmentMapping.entrySet() later.
@@ -136,49 +160,66 @@ METHOD NAME - toString()
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 CLASS NAME - RouteController.java
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+1)
 BUG NAME WHICH APPLIES TO EVERY METHOD - UnnecessaryAnnotationValueElement	Avoid the use of value in annotations when its the only element
-SUMMARY - Removed "value=" in annotations when it was the only element
+SUMMARY - Removed value= in annotations when it was the only element
 METHOD NAME - ALL METHODS
 
+2)
 BUG NAME - Reversed HTTP statuses
 SUMMARY - OK status was being sent when the department was not found, and vice versa.
 Changed it to send status OK when returning valid Department Details and NOT_FOUND when dept doesn't exist
 METHOD NAME - retrieveDepartment()
 
+3)
 BUG NAME - UseLocaleWithCaseConversions	When doing a String.toLowerCase()/toUpperCase() call, use a Locale
 SUMMARY - Added code to use Locale.US when doing toUppercase()
 METHOD NAME - retrieveDepartment()
 
+4)
 BUG NAME - Sending wrong status when returning course details
 SUMMARY - FORBIDDEN status was being sent even when we were sending the course details, instead of OK.
 changed it to send OK.
 METHOD NAME - retrieveCourse()
 
-BUG NAME - wrong return value
+5)
+BUG NAME - Incorrect return value
 SUMMARY - Was sending -departmentMapping.get(deptCode) before, changed it to return departmentMapping.get(deptCode)
 METHOD NAME - getMajorCtFromDept()
 
-BUG NAME - wrong return http status
+6)
+BUG NAME - Incorrect return http status
 SUMMARY - Was returning HttpStatus.FORBIDDEN, instead of HttpStatus.NOT_FOUND when department is not found.
 changed it to return HttpStatus.NOT_FOUND
 METHOD NAME - getMajorCtFromDept()
 
+7)
 BUG NAME - Not returning course time
 SUMMARY - Was returning "some time " instead of correct course's time slot
 METHOD NAME - findCourseTime()
 
+8)
 BUG NAME - No appropriate message in the body
-SUMMARY - changed from vague message "Attribute was updated successfully" to "Major was added to the department " + deptCode + " successfully".
+SUMMARY - Changed from vague message "Attributed was updated successfully" to "Major was added to the department " + deptCode + " successfully".
 METHOD NAME - addMajorToDept()
 
+9)
 BUG NAME - No appropriate message in the body
-SUMMARY - changed from vague message "Attribute was updated or is at minimum" to "Major was removed from the department " + deptCode + " successfully"
+SUMMARY - Changed from vague message "Attributed was updated or is at minimum" to "Major was removed from the department " + deptCode + " successfully"
 METHOD NAME - removeMajorFromDept()
 
+10)
 BUG NAME - No appropriate message in the body
-SUMMARY - changed from vague message "Attributed was updated successfully" to "EnrollmentCount for course " + courseCode + " was updated successfully."
+SUMMARY - Changed from vague message "Attributed was updated successfully" to "EnrollmentCount for course " + courseCode + " was updated successfully."
 METHOD NAME - setEnrollmentCount()
 
+11)
 BUG NAME - No appropriate message in the body
-SUMMARY - changed from vague message "Attributed was updated successfully" to "CourseTime for " + courseCode + " was updated successfully."
+SUMMARY - Changed from vague message "Attributed was updated successfully" to "CourseTime for " + courseCode + " was updated successfully."
 METHOD NAME - changeCourseTime()
+
+11)
+BUG NAME - Incorrect return http status
+SUMMARY - Was returning HttpStatus.OK during an exception, instead of HttpStatus.INTERNAL_SERVER_ERROR.
+Changed it to return HttpStatus.INTERNAL_SERVER_ERROR.
+METHOD NAME - handleException()

@@ -21,6 +21,10 @@ public class DepartmentTest {
   private HashMap<String, Course> courses;
   private Course course;
 
+  /**
+   * Initializes test Course, HashMap of courses,
+   * and Department instances for testing.
+   */
   @BeforeEach
   public void setUp() {
     course = new Course("Gail Kaiser", "501 NWC", "10:10-11:25", 120);
@@ -90,7 +94,8 @@ public class DepartmentTest {
 
   @Test
   public void testToString() {
-    String expected = "COMS 4156: \nInstructor: Gail Kaiser; Location: 501 NWC; Time: 10:10-11:25\n";
+    String expected =
+        "COMS 4156: \nInstructor: Gail Kaiser; Location: 501 NWC; Time: 10:10-11:25\n";
     assertEquals(expected, department.toString());
   }
 
