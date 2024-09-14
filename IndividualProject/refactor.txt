@@ -1,0 +1,24 @@
+RouteController.java
+
+1) Changed the return body for the endpoint - "/isCourseFull"
+from - true/false
+to - "The course " + courseCode + " is full" / "The course " + courseCode + " is not full"
+
+2) Changed the method name for the endpoint - "/dropStudentFromCourse"
+   from - dropStudent
+   to - dropStudentFromCourse
+
+3) Changed the return body for the endpoint - "/dropStudentFromCourse"
+   from - "Student has not been dropped."
+   to - "Student has not been dropped. 0 students found"
+
+4) Changed handleException() method to print meaningful error messages.
+
+IndividualProjectApplication.java
+
+1) Added the below static final string literals for readability and maintainability
+    private static final String DATA_FILE_PATH = "./data.txt";
+    private static final String SETUP_ARG = "setup";
+
+2) Changed from arg.equals(SETUP_ARG) to SETUP_ARG.equals(arg)
+name - LiteralsFirstInComparisons	Position literals first in String comparisons

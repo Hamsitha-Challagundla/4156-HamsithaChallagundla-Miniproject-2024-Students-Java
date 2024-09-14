@@ -1,15 +1,19 @@
 package dev.coms4156.project.individualproject;
 
-import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests for the Course class.
  * <p>
- * Includes tests for enrolling and dropping students, toString() method, updating course details, and checking if the course is full.
+ * Includes tests for enrolling and dropping students, toString() method,
+ * updating course details, and checking if the course is full.
  * </p>
  */
 @SpringBootTest

@@ -1,3 +1,28 @@
-# Welcome Students of 4156
+#HAMSITHA CHALLAGUNDLA - HC3540
+<br>
+#I1 - INDIVIDUAL MINI PROJECT
 
-Please follow the assignment specifications on Courseworks when completing this project.
+### PMD - static bug finder tool
+
+mvn pmd:check 
+<br>
+open target/site/pmd.html
+
+--------------------------------------
+
+### JACOCO - code coverage tool
+
+mvn clean install 
+<br>
+open target/site/jacoco/index.html
+
+---------------------------------------
+
+### Style checker
+
+mvn checkstyle:check
+
+
+
+
+

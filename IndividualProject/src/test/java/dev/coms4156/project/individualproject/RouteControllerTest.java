@@ -42,6 +42,13 @@ public class RouteControllerTest {
   }
 
   @Test
+  public void testRetrieveDepartmentReturnsOkStatusForLowerCaseDeptCode() throws Exception {
+    mockMvc.perform(get("/retrieveDept")
+            .param("deptCode", "coms"))
+        .andExpect(status().isOk());
+  }
+
+  @Test
   public void testRetrieveDepartmentNotFoundStatus() throws Exception {
     mockMvc.perform(get("/retrieveDept")
             .param("deptCode", "CSE"))
