@@ -27,7 +27,7 @@ public class MyFileDatabase {
    *
    * @param mapping the mapping of department names to Department objects
    */
-  public void setMapping(HashMap<String, Department> mapping) {
+  public void setMapping(Map<String, Department> mapping) {
     this.departmentMapping = mapping;
   }
 
@@ -36,7 +36,7 @@ public class MyFileDatabase {
    *
    * @return the deserialized department mapping
    */
-  public HashMap<String, Department> deSerializeObjectFromFile() {
+  public Map<String, Department> deSerializeObjectFromFile() {
     try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))) {
       Object obj = in.readObject();
       if (obj instanceof HashMap) {
@@ -44,9 +44,13 @@ public class MyFileDatabase {
       } else {
         throw new IllegalArgumentException("Invalid object type in file.");
       }
+    } catch (FileNotFoundException e) {
+      System.out.println("File not found: " + filePath);
+      return new HashMap<>();
     } catch (IOException | ClassNotFoundException e) {
+      System.err.println("Error during deserialization: " + e.getMessage());
       e.printStackTrace();
-      return null;
+      return new HashMap<>();
     }
   }
 
@@ -68,7 +72,7 @@ public class MyFileDatabase {
    *
    * @return the department mapping
    */
-  public HashMap<String, Department> getDepartmentMapping() {
+  public Map<String, Department> getDepartmentMapping() {
     return this.departmentMapping;
   }
 
@@ -79,6 +83,10 @@ public class MyFileDatabase {
    */
   @Override
   public String toString() {
+    if (departmentMapping == null) {
+      return "No department data is available.";
+    }
+
     StringBuilder result = new StringBuilder();
     for (Map.Entry<String, Department> entry : departmentMapping.entrySet()) {
       String key = entry.getKey();
@@ -89,8 +97,8 @@ public class MyFileDatabase {
   }
 
   /** The path to the file containing the database entries. */
-  private String filePath;
+  private final String filePath;
 
   /** The mapping of department names to Department objects. */
-  private HashMap<String, Department> departmentMapping;
+  private Map<String, Department> departmentMapping;
 }

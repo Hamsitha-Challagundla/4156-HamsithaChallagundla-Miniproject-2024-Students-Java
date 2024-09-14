@@ -14,6 +14,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class IndividualProjectApplication implements CommandLineRunner {
 
+    private static final String DATA_FILE_PATH = "./data.txt";
+    private static final String SETUP_ARG = "setup";
+
 	/**
 	 * The main launcher for the service all it does
 	 * is make a call to the overridden run method.
@@ -33,16 +36,17 @@ public class IndividualProjectApplication implements CommandLineRunner {
 	 *
 	 * @param args A {@code String[]} of any potential runtime args
 	 */
+	@Override
 	public void run(String[] args) {
 	  	for (String arg : args) {
-			  if (arg.equals("setup")) {
-				  myFileDatabase = new MyFileDatabase(1, "./data.txt");
+			  if (SETUP_ARG.equals(arg)) {
+				  myFileDatabase = new MyFileDatabase(1, DATA_FILE_PATH);
 				  resetDataFile();
 				  System.out.println("System Setup");
 				  return;
 			  }
 	  	}
-		myFileDatabase = new MyFileDatabase(0, "./data.txt");
+		myFileDatabase = new MyFileDatabase(0, DATA_FILE_PATH);
 		System.out.println("Start up");
 	}
 

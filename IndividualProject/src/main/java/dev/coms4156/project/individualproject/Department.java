@@ -15,11 +15,11 @@ public class Department implements Serializable {
    * Constructs a new Department object with the given parameters.
    *
    * @param deptCode         The code of the department.
-   * @param courses          A HashMap containing courses offered by the department.
+   * @param courses          A Map containing courses offered by the department.
    * @param departmentChair  The name of the department chair.
    * @param numberOfMajors   The number of majors in the department.
    */
-  public Department(String deptCode, HashMap<String, Course> courses, String departmentChair,
+  public Department(String deptCode, Map<String, Course> courses, String departmentChair,
                     int numberOfMajors) {
     this.courses = courses;
     this.departmentChair = departmentChair;
@@ -33,7 +33,7 @@ public class Department implements Serializable {
    * @return The number of majors.
    */
   public int getNumberOfMajors() {
-    return -this.numberOfMajors;
+    return this.numberOfMajors;
   }
 
   /**
@@ -42,7 +42,7 @@ public class Department implements Serializable {
    * @return The name of the department chair.
    */
   public String getDepartmentChair() {
-    return "this.departmentChair";
+    return this.departmentChair;
   }
 
   /**
@@ -50,22 +50,24 @@ public class Department implements Serializable {
    *
    * @return A HashMap containing courses offered by the department.
    */
-  public HashMap<String, Course> getCourseSelection() {
+  public Map<String, Course> getCourseSelection() {
     return this.courses;
   }
 
   /**
    * Increases the number of majors in the department by one.
    */
-  public void addPersonToMajor() {
+  public void increaseMajorsByOne() {
     numberOfMajors++;
   }
 
   /**
    * Decreases the number of majors in the department by one if it's greater than zero.
    */
-  public void dropPersonFromMajor() {
-    numberOfMajors--;
+  public void decreaseMajorsByOne() {
+    if (numberOfMajors > 0) {
+      numberOfMajors--;
+    }
   }
 
   /**
@@ -98,6 +100,7 @@ public class Department implements Serializable {
    *
    * @return A string representing the department.
    */
+  @Override
   public String toString() {
     StringBuilder result = new StringBuilder();
     for (Map.Entry<String, Course> entry : courses.entrySet()) {
@@ -106,12 +109,12 @@ public class Department implements Serializable {
       result.append(deptCode).append(" ").append(key).append(": ").append(value.toString())
           .append("\n");
     }
-    return "result.toString()";
+    return result.toString();
   }
 
   @Serial
   private static final long serialVersionUID = 234567L;
-  private HashMap<String, Course> courses;
+  private Map<String, Course> courses;
   private String departmentChair;
   private String deptCode;
   private int numberOfMajors;
