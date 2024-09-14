@@ -76,7 +76,8 @@ public class RouteController {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
         Map<String, Course> coursesMapping;
-        coursesMapping = departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
+        coursesMapping =
+            departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
 
         if (!coursesMapping.containsKey(Integer.toString(courseCode))) {
           return new ResponseEntity<>("Course Not Found", HttpStatus.NOT_FOUND);
@@ -148,8 +149,9 @@ public class RouteController {
       if (doesDepartmentExists) {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
-        return new ResponseEntity<>("There are: " + departmentMapping.get(deptCode.toUpperCase(Locale.US))
-            .getNumberOfMajors() + " majors in the department", HttpStatus.OK);
+        return new ResponseEntity<>(
+            "There are: " + departmentMapping.get(deptCode.toUpperCase(Locale.US))
+                .getNumberOfMajors() + " majors in the department", HttpStatus.OK);
       }
       return new ResponseEntity<>("Department Not Found", HttpStatus.NOT_FOUND);
     } catch (Exception e) {
@@ -173,8 +175,9 @@ public class RouteController {
       if (doesDepartmentExists) {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
-        return new ResponseEntity<>(departmentMapping.get(deptCode.toUpperCase(Locale.US)).getDepartmentChair() + " is "
-            + "the department chair.", HttpStatus.OK);
+        return new ResponseEntity<>(
+            departmentMapping.get(deptCode.toUpperCase(Locale.US)).getDepartmentChair() + " is "
+                + "the department chair.", HttpStatus.OK);
       }
       return new ResponseEntity<>("Department Not Found", HttpStatus.NOT_FOUND);
     } catch (Exception e) {
@@ -204,7 +207,8 @@ public class RouteController {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
         Map<String, Course> coursesMapping;
-        coursesMapping = departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
+        coursesMapping =
+            departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
 
         Course requestedCourse = coursesMapping.get(Integer.toString(courseCode));
         return new ResponseEntity<>(requestedCourse.getCourseLocation() + " is where the course "
@@ -240,7 +244,8 @@ public class RouteController {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
         Map<String, Course> coursesMapping;
-        coursesMapping = departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
+        coursesMapping =
+            departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
 
         Course requestedCourse = coursesMapping.get(Integer.toString(courseCode));
         return new ResponseEntity<>(requestedCourse.getInstructorName() + " is the instructor for"
@@ -276,7 +281,8 @@ public class RouteController {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
         Map<String, Course> coursesMapping;
-        coursesMapping = departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
+        coursesMapping =
+            departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
 
         Course requestedCourse = coursesMapping.get(Integer.toString(courseCode));
         return new ResponseEntity<>("The course meets at: " + requestedCourse.getCourseTimeSlot(),
@@ -363,7 +369,8 @@ public class RouteController {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
         Map<String, Course> coursesMapping;
-        coursesMapping = departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
+        coursesMapping =
+            departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
 
         Course requestedCourse = coursesMapping.get(Integer.toString(courseCode));
         boolean isStudentDropped = requestedCourse.dropStudent();
@@ -404,7 +411,8 @@ public class RouteController {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
         Map<String, Course> coursesMapping;
-        coursesMapping = departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
+        coursesMapping =
+            departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
 
         Course requestedCourse = coursesMapping.get(Integer.toString(courseCode));
         requestedCourse.setEnrolledStudentCount(count);
@@ -442,7 +450,8 @@ public class RouteController {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
         Map<String, Course> coursesMapping;
-        coursesMapping = departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
+        coursesMapping =
+            departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
 
         Course requestedCourse = coursesMapping.get(Integer.toString(courseCode));
         requestedCourse.reassignTime(time);
@@ -480,7 +489,8 @@ public class RouteController {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
         Map<String, Course> coursesMapping;
-        coursesMapping = departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
+        coursesMapping =
+            departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
 
         Course requestedCourse = coursesMapping.get(Integer.toString(courseCode));
         requestedCourse.reassignInstructor(teacher);
@@ -518,7 +528,8 @@ public class RouteController {
         Map<String, Department> departmentMapping;
         departmentMapping = IndividualProjectApplication.myFileDatabase.getDepartmentMapping();
         Map<String, Course> coursesMapping;
-        coursesMapping = departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
+        coursesMapping =
+            departmentMapping.get(deptCode.toUpperCase(Locale.US)).getCourseSelection();
 
         Course requestedCourse = coursesMapping.get(Integer.toString(courseCode));
         requestedCourse.reassignLocation(location);
