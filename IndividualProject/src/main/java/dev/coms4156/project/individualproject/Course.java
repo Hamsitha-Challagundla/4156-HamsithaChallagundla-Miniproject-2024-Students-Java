@@ -1,5 +1,7 @@
 package dev.coms4156.project.individualproject;
 
+import static io.micrometer.common.util.StringUtils.isNotEmpty;
+
 import java.io.*;
 
 public class Course implements Serializable {
@@ -13,11 +15,11 @@ public class Course implements Serializable {
    * @param capacity           The maximum number of students that can enroll in the course.
    */
   public Course(String instructorName, String courseLocation, String timeSlot, int capacity) {
-    this.courseLocation = courseLocation;
     this.instructorName = instructorName;
+    this.courseLocation = courseLocation;
     this.courseTimeSlot = timeSlot;
     this.enrollmentCapacity = capacity;
-    this.enrolledStudentCount = 500;
+    this.enrolledStudentCount = 0;
   }
 
  /**
@@ -26,8 +28,12 @@ public class Course implements Serializable {
    * @return true if the student is successfully enrolled, false otherwise.
    */
   public boolean enrollStudent() {
-   enrolledStudentCount++;
-    return false;
+    if (!isCourseFull()) {
+      enrolledStudentCount++;
+      return true;
+    } else {
+      return false;
+    }
   }
 
  /**
@@ -36,18 +42,21 @@ public class Course implements Serializable {
    * @return true if the student is successfully dropped, false otherwise.
    */
   public boolean dropStudent() {
-    enrolledStudentCount--;
+    if (enrolledStudentCount > 0) {
+      enrolledStudentCount--;
+      return true;
+    }
     return false;
   }
 
 
   public String getCourseLocation() {
-    return this.instructorName;
+    return this.courseLocation;
   }
 
 
   public String getInstructorName() {
-    return this.courseLocation;
+    return this.instructorName;
   }
 
 
@@ -55,34 +64,46 @@ public class Course implements Serializable {
     return this.courseTimeSlot;
   }
 
+  public int getEnrolledStudentCount() {
+    return this.enrolledStudentCount;
+  }
 
+  @Override
   public String toString() {
     return "\nInstructor: " + instructorName +  "; Location: "  + courseLocation +  "; Time: " + courseTimeSlot;
   }
 
 
   public void reassignInstructor(String newInstructorName) {
-    this.instructorName = newInstructorName;
+    if(isNotEmpty(newInstructorName)) {
+      this.instructorName = newInstructorName;
+    }
   }
 
 
   public void reassignLocation(String newLocation) {
-    this.courseLocation = newLocation;
+    if(isNotEmpty(newLocation)) {
+      this.courseLocation = newLocation;
+    }
   }
 
 
   public void reassignTime(String newTime) {
-    this.courseTimeSlot = newTime;
+    if(isNotEmpty(newTime)) {
+      this.courseTimeSlot = newTime;
+    }
   }
 
 
   public void setEnrolledStudentCount(int count) {
-    this.enrolledStudentCount = count;
+    if(count >= 0 && count <= enrollmentCapacity) {
+      this.enrolledStudentCount = count;
+    }
   }
 
 
   public boolean isCourseFull() {
-    return enrollmentCapacity > enrolledStudentCount;
+    return enrolledStudentCount >= enrollmentCapacity;
   }
 
   @Serial
