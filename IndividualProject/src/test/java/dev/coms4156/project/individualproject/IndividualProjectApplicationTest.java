@@ -2,11 +2,9 @@ package dev.coms4156.project.individualproject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -56,7 +54,7 @@ class IndividualProjectApplicationTest {
   }
 
   @Test
-  void testResetDataFile(){
+  void testResetDataFile() {
     app.resetDataFile();
     verify(IndividualProjectApplication.myFileDatabase).setMapping(any(HashMap.class));
   }
